@@ -16,28 +16,27 @@ def afficher_grille():
     for i in ordonnees:
         print(*i, sep="  ")
 
-def cuirassé(x, y, orientation):
-    y-=1
+def porte_avion(x, y, orientation):
+    x -= 1
+    y -= 1
     if orientation == "H":
-        if y > 6:
+        if x > 5:
             print("X trop grand !")
             return
         for i in range(5):
-            x[y] = "C"
-            y += 1
+            ordonnees[y][x] = "A"
+            x += 1
         afficher_grille()
         return x
     if orientation == "V":
-        if x not in ordonnees[:6]:
-            print("Mauvais Y")
+        if y > 5:
+            print("Y trop grand !")
             return
-        for i in range(10):
-            if x == ordonnees[i]:
-                position = i
-        for j in range(5):
-            ordonnees[position][y] = "C"
-            position += 1
+        for i in range(5):
+            ordonnees[y][x] = "A"
+            y += 1
         afficher_grille()
+        return x
 
 def tirer(x, y):
     try:
@@ -46,8 +45,6 @@ def tirer(x, y):
     except:
         print("Erreur !")
 
-
+porte_avion(10, 6, "V")
 
 tirer(A, 2)
-
-cuirassé(A, 1, "V") 
