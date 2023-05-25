@@ -17,12 +17,13 @@ def afficher_grille():
         print(*i, sep="  ")
 
 def cuirassé(x, y, orientation):
+    y-=1
     if orientation == "H":
         if y > 6:
             print("X trop grand !")
             return
         for i in range(5):
-            x[y - 1] = "C"
+            x[y] = "C"
             y += 1
         afficher_grille()
         return x
@@ -36,6 +37,7 @@ def cuirassé(x, y, orientation):
         for j in range(5):
             ordonnees[position][y] = "C"
             position += 1
+        afficher_grille()
 
 def tirer(x, y):
     try:
@@ -46,6 +48,6 @@ def tirer(x, y):
 
 
 
-tirer(A, 1)
+tirer(A, 2)
 
-cuirassé(G, 6, "V") 
+cuirassé(A, 1, "V") 
