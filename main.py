@@ -29,9 +29,14 @@ def afficher_grille():
 
 def convert(convert):
     convert_list = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+    convert_list_min = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
     for i in range(len(convert_list)):
         if convert == convert_list[i]:
             convert = i + 1
+            return int(convert)
+    for j in range(len(convert_list_min)):
+        if convert == convert_list_min[j]:
+            convert = j + 1
             return int(convert)
 
 def libre(x, y, longueur, sens):
@@ -262,8 +267,8 @@ def tirer(x, y):
 
 
 def receive_messages(client_socket):
-    gotID=False
-    id=None
+    gotID = False
+    id = None
     while True:
         try:
             data = client_socket.recv(1024)
@@ -271,7 +276,7 @@ def receive_messages(client_socket):
                 if not gotID:
                     id = data.decode()
                     gotID=True
-                if data.decode()=="PPA":
+                if data.decode() == "PPA":
                     porte_avion(input("coordonée A-J"),int(input("coordonée 1-10")),input("sens : V-H"))
 
 
@@ -291,14 +296,14 @@ def ping(socket):
         socket.send(ping.encode())
 
 
-ip= input("entrez l'ip du serveur : ")
-port= input("entrez me port du serveur (vide pour défaut 10000) : ")
+ip = input("entrez l'ip du serveur : ")
+port = input("entrez le port du serveur (vide pour défaut 10000) : ")
 
-if port=="":
-    port=10000
+if port == "":
+    port = 10000
 
 try:
-    port=int(port)
+    port = int(port)
 except: 
     print("erreur a l'entrée du port(étape conversion string -> int )")
     exit()
