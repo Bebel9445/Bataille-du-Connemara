@@ -7,4 +7,4 @@ ______       _        _ _ _            _         _____
 \____/ \__,_|\__\__,_|_|_|_|\___|  \__,_|\__,_|  \____/\___/|_| |_|_| |_|\___|_| |_| |_|\__,_|_|  \__,_|
  ```   
 
-bienvenue, les batailles du connemara est un jeu de bataille navale en lan avec python, il résulte d'un concentré de chomage et de musique bloquée en tête 
+Bienvenue, les batailles du Connemara est un jeu de bataille navale en lan avec python, il résulte d'un concentré de chômage et de musique coincé en tête.
