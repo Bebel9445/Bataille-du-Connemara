@@ -13,27 +13,43 @@ ordonnees = [A, B, C, D, E, F, G, H, I, J]
 
 
 def afficher_grille():
+    print("\n\n\n")
     for i in ordonnees:
         print(*i, sep="  ")
-    print("\n\n\n")
+
+
+def convert(convert):
+    convert_list = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+    for i in range(len(convert_list)):
+        if convert == convert_list[i]:
+            convert = i + 1
+            return int(convert)
 
 def libre(x, y, longueur, sens):
     if sens == "H":
         for i in range(x, x + longueur):
             if ordonnees[y][i] != "O":
-                print("On ne peut superposer 2 bateau !\n\n\n")
+                print("\n\n\nOn ne peut superposer 2 bateau !")
                 return False
         return True
     if sens == "V":
         for i in range(y, y + longueur):
             if ordonnees[i][x] != "O":
-                print("On ne peut superposer 2 bateau !\n\n\n")
+                print("\n\n\nOn ne peut superposer 2 bateau !")
                 return False
         return True
 
-def porte_avion(x, y, sens):
+def porte_avion(y, x, sens):
+    if not isinstance(x, int):
+        print("ERREUR : L'abscisse n'est pas un entier !!")
+        return
+    y = convert(y)
     x -= 1
-    y -= 1
+    try:
+        y -= 1 # type: ignore
+    except:
+        print("ERREUR : L'ordonnée n'est pas une lettre ou est trop grand (A-J) !!")
+        return
     if sens == "H":
         if x > 5:
             print("X trop grand !")
@@ -55,9 +71,17 @@ def porte_avion(x, y, sens):
             afficher_grille()
             return x
         
-def cuirasse(x, y, sens):
+def cuirasse(y, x, sens):
+    if not isinstance(x, int):
+        print("ERREUR : L'abscisse n'est pas un entier !!")
+        return
+    y = convert(y)
     x -= 1
-    y -= 1
+    try:
+        y -= 1 # type: ignore
+    except:
+        print("ERREUR : L'ordonnée n'est pas une lettre ou est trop grand (A-J) !!")
+        return
     if sens == "H":
         if x > 6:
             print("X trop grand !")
@@ -79,9 +103,17 @@ def cuirasse(x, y, sens):
             afficher_grille()
             return x
         
-def croiseur(x, y, sens):
+def croiseur(y, x, sens):
+    if not isinstance(x, int):
+        print("ERREUR : L'abscisse n'est pas un entier !!")
+        return
+    y = convert(y)
     x -= 1
-    y -= 1
+    try:
+        y -= 1 # type: ignore
+    except:
+        print("ERREUR : L'ordonnée n'est pas une lettre ou est trop grand (A-J) !!")
+        return
     if sens == "H":
         if x > 7:
             print("X trop grand !")
@@ -103,9 +135,17 @@ def croiseur(x, y, sens):
             afficher_grille()
             return x
         
-def sous_marin(x, y, sens):
+def sous_marin(y, x, sens):
+    if not isinstance(x, int):
+        print("ERREUR : L'abscisse n'est pas un entier !!")
+        return
+    y = convert(y)
     x -= 1
-    y -= 1
+    try:
+        y -= 1 # type: ignore
+    except:
+        print("ERREUR : L'ordonnée n'est pas une lettre ou est trop grand (A-J) !!")
+        return
     if sens == "H":
         if x > 7:
             print("X trop grand !")
@@ -127,9 +167,17 @@ def sous_marin(x, y, sens):
             afficher_grille()
             return x
 
-def destroyer(x, y, sens):
+def destroyer(y, x, sens):
+    if not isinstance(x, int):
+        print("ERREUR : L'abscisse n'est pas un entier !!")
+        return
+    y = convert(y)
     x -= 1
-    y -= 1
+    try:
+        y -= 1 # type: ignore
+    except:
+        print("ERREUR : L'ordonnée n'est pas une lettre ou est trop grand (A-J) !!")
+        return
     if sens == "H":
         if x > 8:
             print("X trop grand !")
@@ -158,14 +206,14 @@ def tirer(x, y):
     except:
         print("Erreur !")
 
-porte_avion(10, 6, "V")
+porte_avion(input("Ordonnée du porte-avions --> "), int(input("Abscisse du porte-avions --> ")), input("Orientation (V/H) --> "))
 
-cuirasse(10, 2, "V")
+cuirasse(input("Ordonnée du cuirassé --> "), int(input("Abscisse du cuirassé --> ")), input("Orientation (V/H) --> "))
 
-croiseur(8, 1, "H")
+croiseur(input("Ordonnée du croiseur --> "), int(input("Abscisse du croiseur --> ")), input("Orientation (V/H) --> "))
 
-sous_marin(5, 1, "H")
+sous_marin(input("Ordonnée du sous-marin --> "), int(input("Abscisse du sous-marin --> ")), input("Orientation (V/H) --> "))
 
-destroyer(9, 5, "V")
+destroyer(input("Ordonnée du destroyer --> "), int(input("Abscisse destroyer --> ")), input("Orientation (V/H) --> "))
 
-tirer(A, 2)
+tirer(A, 1)
