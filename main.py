@@ -54,6 +54,9 @@ def porte_avion(y, x, sens):
         if x > 5:
             print("X trop grand !")
             return
+        if x < 0:
+            print("X trop petit !")
+            return
         if libre(x, y, 5, "H") == True:
             for i in range(5):
                 ordonnees[y][x] = "≕"
@@ -63,6 +66,9 @@ def porte_avion(y, x, sens):
     if sens == "V":
         if y > 5:
             print("Y trop grand !")
+            return
+        if x < 0:
+            print("X trop petit !")
             return
         if libre(x, y, 5, "V") == True:
             for i in range(5):
@@ -86,6 +92,9 @@ def cuirasse(y, x, sens):
         if x > 6:
             print("X trop grand !")
             return
+        if x < 0:
+            print("X trop petit !")
+            return
         if libre(x, y, 4, "H") == True:
             for i in range(4):
                 ordonnees[y][x] = "⇛"
@@ -95,6 +104,9 @@ def cuirasse(y, x, sens):
     if sens == "V":
         if y > 6:
             print("Y trop grand !")
+            return
+        if x < 0:
+            print("X trop petit !")
             return
         if libre(x, y, 4, "V") == True:
             for i in range(4):
@@ -118,6 +130,9 @@ def croiseur(y, x, sens):
         if x > 7:
             print("X trop grand !")
             return
+        if x < 0:
+            print("X trop petit !")
+            return
         if libre(x, y, 3, "H") == True:
             for i in range(3):
                 ordonnees[y][x] = "⇒"
@@ -127,6 +142,9 @@ def croiseur(y, x, sens):
     if sens == "V":
         if y > 7:
             print("Y trop grand !")
+            return
+        if x < 0:
+            print("X trop petit !")
             return
         if libre(x, y, 3, "V") == True:
             for i in range(3):
@@ -150,6 +168,9 @@ def sous_marin(y, x, sens):
         if x > 7:
             print("X trop grand !")
             return
+        if x < 0:
+            print("X trop petit !")
+            return
         if libre(x, y, 3, "H") == True:
             for i in range(3):
                 ordonnees[y][x] = "⧐"
@@ -159,6 +180,9 @@ def sous_marin(y, x, sens):
     if sens == "V":
         if y > 7:
             print("Y trop grand !")
+            return
+        if x < 0:
+            print("X trop petit !")
             return
         if libre(x, y, 3, "V") == True:
             for i in range(3):
@@ -182,6 +206,9 @@ def destroyer(y, x, sens):
         if x > 8:
             print("X trop grand !")
             return
+        if x < 0:
+            print("X trop petit !")
+            return
         if libre(x, y, 2, "H") == True:
             for i in range(2):
                 ordonnees[y][x] = "⊳"
@@ -191,6 +218,9 @@ def destroyer(y, x, sens):
     if sens == "V":
         if y > 8:
             print("Y trop grand !")
+            return
+        if x < 0:
+            print("X trop petit !")
             return
         if libre(x, y, 2, "V") == True:
             for i in range(2):
@@ -216,4 +246,4 @@ sous_marin(input("Ordonnée du sous-marin --> "), int(input("Abscisse du sous-ma
 
 destroyer(input("Ordonnée du destroyer --> "), int(input("Abscisse destroyer --> ")), input("Orientation (V/H) --> "))
 
-tirer(A, 1)
+tirer(input("Ordonnée du tir --> "), int(input("Abscisse du tir --> ")))
